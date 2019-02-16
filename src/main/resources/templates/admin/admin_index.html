@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div class="content-wrapper" layout:fragment="content_body">
+    ㅇㅓ드민 페이지입니다^^
+
+    <div sec:authorize="isAnonymous()">
+        익명입니다
+    </div>
+    <div sec:authorize="isAuthenticated()">
+        로그인 되었군요?
+    </div>
+    <div sec:authentication="name">유저네임</div>
+    <div sec:authorize="hasAnyRole('USER')">유저네요?</div>
+    <div sec:authorize="hasAnyRole('ADMIN')">어드민이네요?</div>
+</div>
+
+</body>
+</html>

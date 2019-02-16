@@ -13,4 +13,9 @@ public class HelloController {
         return "index";
     }
 
+    @GetMapping("/usersample")
+    public String usersample(){
+        return "usersample";
+    }
+
 }
