@@ -4,6 +4,13 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout/layout}"
 >
+<head>
+    <style>
+        li.active a{
+            color:red;
+        }
+    </style>
+</head>
 <body>
 
 
@@ -23,10 +30,15 @@
     </form>
 
     <hr>
-    <div th:each="member : ${list}">
-        유저 이름 : <span th:text="${member.username}"></span><br>
-        유저 비밀번호 : <span th:text="${member.password}"></span>
-    </div>
+
+    <th:block th:if="${pageinfo != null}">
+        <div th:each="member : ${pageinfo.content}">
+            유저 이름 : <span th:text="${member.username}"></span><br>
+            유저 비밀번호 : <span th:text="${member.password}"></span>
+        </div>
+        <hr>
+        <ul th:replace="~{common/pagination :: pagination('/member')}"></ul>
+    </th:block>
 
 </div>
 

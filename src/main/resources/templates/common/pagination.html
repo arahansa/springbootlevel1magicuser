@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<ul class="pagination pagination-lg pull-right" th:fragment="pagination(location)">
+    <li >
+        <a th:href="@{${location}}">목록</a>
+    </li>
+    <li th:if="${pageinfo.previous}">
+        <a th:href="@{${location} + '?page=' + ${pageinfo.beginPage-1 }}"
+        >«</a>
+    </li>
+
+    <li th:each="numPage : ${pageinfo.pages }" th:classappend="${pageinfo.currentPage == numPage}? 'active'">
+        <a th:href="@{${location} + '?page=' + ${numPage }}"
+           th:text="${numPage}"></a>
+    </li>
+
+    <li th:if="${pageinfo.next}">
+        <a th:href="@{${location} + '?page=' + ${pageinfo.endPage+1 }}"
+        >»</a>
+    </li>
+</ul>
